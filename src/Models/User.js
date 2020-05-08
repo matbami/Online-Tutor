@@ -54,6 +54,17 @@ user.methods.generateAuthToken = async function () {
   return token;
 };
 
+user.pre("save", async function (next) {
+  const user = this;
+
+  if (user.isModified("password")) {
+    user.password = await bcrypt.hash(user.password, 8);
+    console.log(this.password);
+  }
+
+  next();
+});
+
 const User = mongoose.model("User", user);
 
 module.exports = User;
