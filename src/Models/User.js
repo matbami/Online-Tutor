@@ -53,6 +53,20 @@ user.methods.generateAuthToken = async function () {
 
   return token;
 };
+user.statics.findByCredentials = async (email, password) => {
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    throw new Error("Unable to login");
+  }
+
+  const ismatch = await bcrypt.compare(password, user.password);
+
+  if (!ismatch) {
+    throw new Error("Unable to login");
+  }
+  return user;
+};
 
 user.pre("save", async function (next) {
   const user = this;
