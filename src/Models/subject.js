@@ -18,6 +18,12 @@ const subject = new mongoose.Schema(
       // required: true,
       ref: "User",
     },
+
+    tutor: {
+      type: mongoose.Schema.Types.ObjectId,
+      // required: true,
+      ref: "User",
+    },
   },
   { timestamps: true }
 );
