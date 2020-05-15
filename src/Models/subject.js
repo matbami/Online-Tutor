@@ -12,6 +12,12 @@ const subject = new mongoose.Schema(
       required: true,
       enum: ["primary", "jss", "sss"],
     },
+
+    admin: {
+      type: mongoose.Schema.Types.ObjectId,
+      // required: true,
+      ref: "User",
+    },
   },
   { timestamps: true }
 );
