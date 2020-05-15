@@ -40,6 +40,16 @@ router.get("/tutor/:id", auth, auth2, async (req, res) => {
   }
 });
 
+//tutors acn register to take a subject in a category
+router.post("/subject/register", auth, auth2, async (req, res) => {
+  const _id = req.body.tutor;
+  try {
+    const tutor = await User.findById(_id);
+    res.status(201).send(tutor);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
 //login
 // router.post("/user/login", async (req, res) => {
 //   try {
