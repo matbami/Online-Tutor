@@ -7,7 +7,17 @@ const lesson = new mongoose.Schema(
       required: true,
     },
 
-    subject: {},
+    subject: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "subject",
+    },
+
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      // required: true,
+      ref: "User",
+    },
   },
   { timestamps: true }
 );

@@ -8,9 +8,9 @@ const subject = new mongoose.Schema(
     },
 
     category: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
-      enum: ["primary", "jss", "sss"],
+      ref: "category",
     },
 
     admin: {
